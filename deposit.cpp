@@ -1,6 +1,54 @@
 #include<iostream>
 using namespace std;
 
+void transaction()
+{
+    cout << "\n--------Transaction--------\n";
+    while(true)
+    {
+    cout<<"\nHas it been 7 days since you deposited the cheque? (yes/no): \n";
+    string response;
+    cin >> response;
+    if (response == "yes") 
+    {
+        cout << "\nMoney transferred to receiver.\n";
+        break;
+    } 
+    else
+    {
+        cout<<"\nIf you need the money before 7 days, then it needs a sender review.";
+        cout<<"\nSender review? (yes/no): \n";
+        string review;
+        cin >> review;
+        if(review=="yes")
+        {
+            cout<<"\nNow moving on to sender authorise\n";
+            cout<<"\nSender authorise? (yes/no): \n";
+            string auth;
+            cin >> auth;
+            if(auth=="yes")
+            {
+                cout<<"\nSender has authorised the cheque.\n";
+                cout<<"\nMoney transferred to receiver.\n";
+                break;
+            }
+            else
+            {
+                cout<<"\nSender has not authorised the cheque.\n";
+                cout<<"\nInvalid Transaction.\n";
+                break;
+            }
+        }
+        else
+        {
+            cout<<"\nSender review says no, cheque is waiting in progress\n";
+            cout<<"\nKidnly wait for 7 days.\n";
+        }
+
+    }
+    }
+}
+
 void cheque()
 {
     cout << "\n--------Cheque--------\n";
@@ -36,5 +84,5 @@ int main()
     cout<<"\n--------Deposit Cheque--------\n";
     credentials();
     cheque();
-    // transaction();
+    transaction();
 }
